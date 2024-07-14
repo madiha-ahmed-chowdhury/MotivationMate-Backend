@@ -15,6 +15,9 @@ const blogSchema = mongoose.Schema(
             type: String,
             required: [true, "Please add content"]
         },
+        tag:{
+            type: String
+        },
         url: {
             type: String,
             required: false  // Optional field
