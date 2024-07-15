@@ -6,3 +6,4 @@ router.get('/search', searchUsers);
 router.get('/showblogs/:userId',showBlogs);
 router.get('/search/blogs',searchBlogs);
 module.exports = router;
+
