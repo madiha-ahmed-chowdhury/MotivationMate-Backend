@@ -4,8 +4,16 @@ const blogModel = require("../models/blogModel");
 //@desc get all blog items
 //@route GET /api/blog
 //@access public
+// const getBlogs = asyncHanlder(async (req, res) => {
+//     const Blogs = await todoModel.find({user_id:req.user.id});
+//     res.status(200).json(Blogs);
+// });
+
+//@desc get all blog items
+//@route GET /api/blog
+//@access private
 const getBlogs = asyncHanlder(async (req, res) => {
-    const Blogs = await todoModel.find({user_id:req.user.id});
+    const Blogs = await blogModel.find({user_id:req.user.id});
     res.status(200).json(Blogs);
 });
 

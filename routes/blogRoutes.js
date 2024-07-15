@@ -6,4 +6,4 @@ const validateToken = require("../middleware/validateTokenHandler");
 router.use(validateToken);
 router.route("/").get(getBlogs).post(postBlog);
 router.route("/:id").get(getBlog).delete(deleteBlog).put(putBlog);
-
+module.exports=router;
