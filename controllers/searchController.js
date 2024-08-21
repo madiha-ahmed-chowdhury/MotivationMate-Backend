@@ -33,7 +33,6 @@ const searchUsers = asyncHandler(async (req, res) => {
     res.status(200).json(result);
 });
 
-
 const showBlogs = asyncHandler(async (req, res) => {
     const { userId } = req.params;
 
@@ -72,4 +71,16 @@ const searchBlogs = asyncHandler(async (req, res) => {
     res.status(200).json(blogs);
 });
 
-module.exports = { searchUsers, showBlogs, searchBlogs };
+const showTimeWiseBlogs = asyncHandler(async (req, res) => {
+    try {
+      const blogs = await Blog.find()
+        .sort({ createdAt: -1 }) // Sorting in descending order (newest first)
+        .limit(5); // First 5
+  
+      res.status(200).json(blogs); 
+    } catch (error) {
+      res.status(500).json({ message: "Server Error", error: error.message });
+    }
+  });
+
+module.exports = { searchUsers, showBlogs, searchBlogs, showTimeWiseBlogs };
