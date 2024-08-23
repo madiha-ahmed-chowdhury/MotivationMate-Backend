@@ -2,6 +2,18 @@ const asyncHandler = require('express-async-handler');
 const User = require('../models/userModel');
 const Blog = require('../models/blogModel'); // Assuming your blog model file is named blogModel.js
 
+const searchUserByID = asyncHandler(async (req, res) =>{
+    const userId = req.params.userId;
+
+    const user = await User.findById(userId);
+
+    if(!user){
+        res.status(404).json({ message: 'No users found' });
+        return;
+    }
+    res.status(200).json(user);
+});
+
 const searchUsers = asyncHandler(async (req, res) => {
     const { username } = req.query;
 
@@ -84,4 +96,4 @@ const showTimeWiseBlogs = asyncHandler(async (req, res) => {
     }
   });
 
-module.exports = { searchUsers, showBlogs, searchBlogs, showTimeWiseBlogs };
+module.exports = { searchUsers, showBlogs, searchBlogs, showTimeWiseBlogs, searchUserByID };
