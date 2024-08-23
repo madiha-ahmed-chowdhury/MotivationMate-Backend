@@ -24,6 +24,7 @@ const searchUsers = asyncHandler(async (req, res) => {
 
     // Combine user info with their blogs
     const result = users.map(user => ({
+        id: user._id,
         username: user.username,
         email: user.email,
         createdAt: user.createdAt

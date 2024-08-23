@@ -68,7 +68,7 @@ const postBlog = asyncHanlder(async (req, res) => {
 });
 
 //@desc update blog item
-//@route Put /api/blog/:id
+//@route Put /api/blogs/:id
 //@access private
 const putBlog = asyncHanlder(async (req, res) => {
     //const title = req.params.title;
